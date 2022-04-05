@@ -10,38 +10,38 @@
     
     <body>
     
-        <header>
+        <header class="header">
             <img class="header__pic" src="/logo/Marvel_Logo.png" alt="Logo Marvel rouge et blanc">
             <h1 class="header__title">MarvelDex</h1>
         </header>
 
         <?php require("controllers/connect_controller.php"); ?>
 
-        <main>
+        <main class="main-container">
             <!-- loop to display id and name for each team -->
-            <section>
-                <?php
-                foreach ($result_teams as $team): ?>
-                <h2>
-                    <?php echo "#" .$team['id']. " " .$team['name']; ?>
+            <?php foreach ($result_teams as $team): ?>
+            <section class="team">
+                <h2 class="team__title">
+                    <?php echo "#" .$team['id']. " - " .$team['name']; ?>
                 </h2>
-                    <!-- in each team, loop to display picture and name for each hero -->
-                    <?php foreach ($result_heroes as $hero): ?>
-                    <article>
-                    <?php if ($team['id'] === $hero['team']): ?>
-                        <div>
-                            <!-- <img src="hero_pic/<?php echo $hero['picture'] ?>" alt="<?php echo $hero['picture'] ?>"> -->
-                            <p>
-                                <?php echo $hero['identity']; ?>
-                            </p>
-                        </div>
-                    <?php endif ?>
-                    </article>
-                    <?php endforeach; ?>
-
-                <?php endforeach; ?>                
-
+                    <div class="team__container">
+                        <!-- in each team, loop to display picture and name for each hero -->
+                        <?php foreach ($result_heroes as $hero): ?>
+                        
+                        <?php if ($team['id'] === $hero['team']): ?>
+                            <article class="article">
+                                <img class="article__pic" src="hero_pic/<?php echo $hero['picture'] ?>" alt="<?php echo $hero['picture'] ?>">
+                                <div class="article-title"></div>
+                                <p class="article-title__name">
+                                        <?php echo $hero['identity']; ?>
+                                </p>
+                            </article>
+                        <?php endif ?>
+                        
+                        <?php endforeach; ?>
+                    </div>
             </section>
+            <?php endforeach; ?>
            
         </main>
         <?php $dbconnect = null; ?>
