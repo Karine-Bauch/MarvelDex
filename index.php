@@ -12,62 +12,38 @@
     
         <header>
             <img class="header__pic" src="/logo/Marvel_Logo.png" alt="Logo Marvel rouge et blanc">
-            <h1 class="header__title">Repository</h1>
+            <h1 class="header__title">MarvelDex</h1>
         </header>
 
-        <?php
-            $servname = '127.0.0.1';
-            $dbname = 'marvel';
-            $user = 'marvel';
-            $pass = 'marvel@0503';
-            
-            
-            //On essaie de se connecter
-            try{
-                $dbconnect = new PDO("mysql:host=$servname;dbname=$dbname", $user, $pass);
-                //On définit le mode d'erreur de PDO sur Exception
-                $dbconnect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                // echo 'Connexion réussie';
-
-                $teams = $dbconnect->prepare("SELECT id, name FROM team");
-                $teams->execute();
-
-                $teamRes = $teams->fetchAll(PDO::FETCH_ASSOC);
-                
-            }
-            
-            /*On capture les exceptions si une exception est lancée et on affiche
-             *les informations relatives à celle-ci*/
-            catch(PDOException $e){
-              echo "Erreur : " . $e->getMessage();
-            }
-        ?>
+        <?php require("controllers/connect_controller.php"); ?>
 
         <main>
             <!-- loop to display id and name for each team -->
             <section>
+                <?php
+                foreach ($result_teams as $team): ?>
                 <h2>
-                    <?php
-                       foreach ($teamRes as $team) {
-                        print_r("#" .$team['id']. " " .$team['name']. "<br>");
-                       }
-                    ?>
+                    <?php echo "#" .$team['id']. " " .$team['name']; ?>
                 </h2>
-                <!-- in each team, loop to display picture and name for each hero 
-                Need a file which send a list of heroes organized by team -->
-                <article>
-                    <div>
-                        <p>
-                            Surnom
-                        </p>
-                    </div>
-                </article>
+                    <!-- in each team, loop to display picture and name for each hero -->
+                    <?php foreach ($result_heroes as $hero): ?>
+                    <article>
+                    <?php if ($team['id'] === $hero['team']): ?>
+                        <div>
+                            <!-- <img src="hero_pic/<?php echo $hero['picture'] ?>" alt="<?php echo $hero['picture'] ?>"> -->
+                            <p>
+                                <?php echo $hero['identity']; ?>
+                            </p>
+                        </div>
+                    <?php endif ?>
+                    </article>
+                    <?php endforeach; ?>
+
+                <?php endforeach; ?>                
 
             </section>
            
         </main>
-        <?php
-            $dbconnect = null;
-        ?>
+        <?php $dbconnect = null; ?>
     </body>
 </html>
