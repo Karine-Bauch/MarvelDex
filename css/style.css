@@ -6,6 +6,11 @@ body {
     color: #ffffff;
 }
 
+a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
 .main-container {
     width: 80vw;
     margin: auto;

@@ -4,8 +4,8 @@
     <head>
         <title>MarvelDex</title>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="/css/reset.css">
-        <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="css/reset.css">
+        <link rel="stylesheet" href="css/style.css">
     </head>
     
     <body>
@@ -20,7 +20,7 @@
         <main class="main-container">
             <!-- loop to display id and name for each team -->
             <?php foreach ($result_teams as $team): ?>
-            <section class="team">
+            <a class="team" href="character.php">
                 <h2 class="team__title">
                     <?php echo "#" .$team['id']. " - " .$team['name']; ?>
                 </h2>
@@ -40,7 +40,7 @@
                         
                         <?php endforeach; ?>
                     </div>
-            </section>
+            </a>
             <?php endforeach; ?>
            
         </main>
