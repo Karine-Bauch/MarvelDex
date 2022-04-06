@@ -12,6 +12,7 @@
   * si id null
   * si id NaN
   * si id inexistant
+* Ajouter une gestion des erreurs au niveau des requêtes en BDD
 
 
 ___

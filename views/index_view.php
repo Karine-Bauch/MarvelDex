@@ -9,9 +9,10 @@
                         <?php echo "#" .$team['id']. " - " .$team['name']; ?>
                     </h2>
                         <div class="team__container">
-                            <!-- in each team, loop to display picture and name for each hero -->
+                            <!-- loop on each hero -->
                             <?php foreach ($result_heroes as $hero): ?>
                             
+                            <!-- if team id match with hero team, display in the corresponding team -->
                             <?php if ($team['id'] === $hero['team']): ?>
                                 <article class="article">
                                     <a href="index.php/?id=<?php echo $hero['id'] ?>">
