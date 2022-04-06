@@ -4,7 +4,7 @@
             <div class="main__name bold">
                     <?php echo $result_hero['identity']; ?>
             </div>
-            <div class="main__container">
+            <div class="main__container--hero">
                 <div class="hero-container">
                     <div class="hero-pic__container">
                         <img class="hero-pic" src="/public/hero_pic/<?php echo $result_hero['picture'] ?>" alt="<?php echo $result_hero['picture'] ?>">

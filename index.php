@@ -2,7 +2,7 @@
     require("controllers/controller.php");
     
     if ($_GET['id']) {
-        $id = number_format($_GET['id']);
+        $id = $_GET['id'];
         hero($id);
     }
     else {
