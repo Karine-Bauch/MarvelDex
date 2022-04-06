@@ -1,4 +1,5 @@
 <?php
+    // To get all teams in DB to send to the controller
     function get_all_teams() {
         require("controllers/connect_controller.php");
 
@@ -8,6 +9,7 @@
         return $result_teams;
     }
 
+    // To get all heroes in DB to send to the controller
     function get_all_heroes() {
         require("controllers/connect_controller.php");
 
@@ -17,6 +19,7 @@
         return $result_heroes;
     }
 
+    // To get one hero in DB with his team and his powers to send to the controller
     function get_hero_by_id($id) {
         require("controllers/connect_controller.php");
 
